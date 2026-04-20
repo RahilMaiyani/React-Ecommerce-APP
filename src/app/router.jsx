@@ -2,12 +2,14 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "../App";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import Home from "../pages/Home";
 import ProtectedRoute from "../components/ProtectedRoute";
-import Cart from "../pages/Cart";
-import ProductDetails from "../pages/ProductDetails";
 import PublicRoute from "../components/PublicRoute";
 
+import { lazy } from "react";
+
+const Home = lazy(() => import("../pages/Home"));
+const Cart = lazy(() => import("../pages/Cart"));
+const ProductDetails = lazy(() => import("../pages/ProductDetails"));
 
 
 export const router = createBrowserRouter([

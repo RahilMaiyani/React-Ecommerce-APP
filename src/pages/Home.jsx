@@ -11,7 +11,6 @@ import Navbar from "../components/Navbar";
 import Drawer from "@mui/material/Drawer";
 import Slider from "@mui/material/Slider";
 import Checkbox from "@mui/material/Checkbox";
-import FormControlLabel from "@mui/material/FormControlLabel";
 
 export default function Home() {
   const { data, isLoading, isError } = useProducts();
@@ -81,7 +80,8 @@ export default function Home() {
   const filteredProducts = products.filter((p) => {
     const matchSearch =
       p.title.toLowerCase().includes(search.toLowerCase()) ||
-      p.description.toLowerCase().includes(search.toLowerCase());
+      p.description.toLowerCase().includes(search.toLowerCase()) ||
+      p.category.toLowerCase().includes(search.toLowerCase());
 
     const matchPrice =
       p.price >= priceRange[0] && p.price <= priceRange[1];
@@ -148,7 +148,7 @@ export default function Home() {
             </div>
 
             {/* OVERLAY */}
-            <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/40 backdrop-blur-xl border border-[#2a2a2a] px-3 py-2 rounded-lg">
+            <div className="absolute bottom-2 left-2 right-2 flex items-center justify-between bg-black/40 backdrop-blur-lg border border-[#2a2a2a] px-3 py-2 rounded-lg">
               <h3 className="text-sm font-medium tracking-tight text-white line-clamp-2">
                 {product.title}
               </h3>
@@ -282,7 +282,7 @@ export default function Home() {
             </div>
 
             {/* PRICE SECTION */}
-            <div className="mb-8">
+            <div className="mb-8 ">
               <p className="text-xs text-gray-400 uppercase tracking-wide mb-3">
                 Price Range
               </p>
@@ -313,7 +313,7 @@ export default function Home() {
                 />
               </div>
 
-              <div className="flex justify-between text-xs text-gray-500 mt-2">
+              <div className="flex justify-between text-xs text-gray-500">
                 <span>${minPrice}</span>
                 <span>${maxPrice}</span>
               </div>

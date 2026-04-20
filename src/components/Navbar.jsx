@@ -9,7 +9,7 @@ export default function Navbar({ search, setSearch, showSearch = true }) {
   const [mobileSearch, setMobileSearch] = useState(false);
 
   return (
-    <div className="bg-[#1C1C1C] border-b border-gray-800 px-6 py-4 flex items-center justify-between gap-4 mb-4 relative">
+    <div className="px-6 py-4 flex items-center justify-between gap-4 mb-4 relative">
 
       {/* MOBILE SEARCH MODE */}
       {mobileSearch ? (
@@ -64,7 +64,7 @@ export default function Navbar({ search, setSearch, showSearch = true }) {
             </span>
           </div>
 
-          {/* DESKTOP SEARCH (UNCHANGED) */}
+          {/* DESKTOP SEARCH*/}
           {showSearch && (
             <div className="hidden md:flex flex-1 justify-center">
               <div className="relative w-full max-w-md">

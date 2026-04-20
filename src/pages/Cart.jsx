@@ -16,10 +16,41 @@ export default function Cart() {
 
   const cart = cartData?.[0];
 
-  if (!cart) {
+  
+  // ✅ EMPTY STATE (FIXED)
+  if (!cart || cart.products.length === 0) {
     return (
-      <div className="min-h-screen bg-[#0b0b0b] text-white flex items-center justify-center">
-        <p className="text-gray-500">Cart is empty</p>
+      <div
+        className="min-h-screen flex flex-col items-center justify-center text-white bg-[#0b0b0b] relative overflow-hidden"
+        style={{
+          backgroundColor: "#1c1c1c",
+          backgroundImage:
+            'url("https://www.transparenttextures.com/patterns/broken-noise.png")',
+        }}
+      >
+        {/* glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-white/5 blur-[120px]" />
+          <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-white/5 blur-[120px]" />
+        </div>
+
+        {/* CONTENT */}
+        <div className="relative z-10 text-center space-y-6">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Your cart is empty
+          </h1>
+
+          <p className="text-gray-400 text-sm">
+            Looks like you haven’t added anything yet.
+          </p>
+
+          <button
+            onClick={() => navigate("/")}
+            className="px-6 py-2 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition"
+          >
+            Start Shopping
+          </button>
+        </div>
       </div>
     );
   }
@@ -94,7 +125,7 @@ export default function Cart() {
         </div>
 
         {/* TOTAL */}
-        <div className="mt-8 bg-[#141414] border border-[#2a2a2a] rounded-xl p-5 flex justify-between items-center">
+        <div className="mt-8 bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl p-5 flex justify-between items-center">
           <h2 className="text-lg font-medium">
             Total
           </h2>
